@@ -79,4 +79,5 @@ console.log(now /10);
 //Logic operators
 var isJohnOlder = ageJohn > ageMark;
 console.log(isJohnOlder);
- 
+
+var change = 'true';
