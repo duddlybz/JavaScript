@@ -621,7 +621,7 @@ while(i < john.length) {
     console.log(john[i]);
     i++;
 }
-*/
+
 // continue and break satemnets
 var john = ['John', 'Smith', 1990, 'designer',false];
 for(var i =0; i < john.length ; i++){
@@ -633,3 +633,78 @@ for(var i =0; i < john.length ; i++){
     //break exit the loop
     console.log(john[i]);
 }
+*/
+
+/************************************
+ *  Coding Challenge 5
+ */
+
+
+var john = {
+    bills: [124, 48 , 268, 180, 42],
+    tips:[],
+    finalBill:[],
+    calcTip: function(){
+        for ( var i=0; i < this.bills.length; i++ ) {
+            if (this.bills[i] >= 200) this.tips[i] = this.bills[i] * 0.1;
+            else if (this.bills[i] < 50) this.tips[i] = this.bills[i] * 0.2;
+            else this.tips[i] = this.bills[i] * 0.15;
+            this.finalBill[i] = this.bills[i] + this.tips[i];
+        }
+    }
+}
+
+
+var mark = {
+    bills: [77, 375 , 110, 45],
+    tips:[],
+    finalBill:[],
+    calcTip: function(){
+        /* Declare with initialize
+        this.tips = [];
+        this.finalBill = [];
+        */
+        for ( var i=0; i < this.bills.length; i++ ) {
+            if (this.bills[i] <= 200) this.tips[i] = this.bills[i] * 0.2;
+            else if (this.bills[i] > 300) this.tips[i] = this.bills[i] * 0.1;
+            else this.tips[i] = this.bills[i] * 0.15;
+            this.finalBill[i] = this.bills[i] + this.tips[i];
+        }
+    }
+}
+
+function calcAvg(tipss){
+    //if you do not initialize it before use, it will remain undefined and draw wrong result. 
+    //Because javascript variable do not clarify the type of variable like int, string when declared,
+    //So you have to assign some values to determine the type of variable like 0, '', true before assigning variable value to other variable.  
+    //변수에 값을 할당하지 않으면 타입이 결정이 안되고 그 상태에서 다른 변수의 값을 넣으면 NaN이 되어버림.
+    //undeifined + 특정 데이터 타입의 값 = NaN!!!
+    var tipSum=0;
+    var tipsAvg=0;
+    for(var j = 0; j < tipss.length; j++ )
+    {
+        tipSum = tipSum + tipss[j];
+    }
+    tipsAvg = tipSum / tipss.length;
+    return tipsAvg;
+}
+
+john.calcTip();
+mark.calcTip();
+
+var johnTipsAvg = calcAvg(john.tips);
+var markTipsAvg = calcAvg(mark.tips);
+
+console.log('John pays average of ' + johnTipsAvg + 'tips, and mark pays average of ' + markTipsAvg + 'tips.');
+
+(johnTipsAvg > markTipsAvg) ? console.log('John pays average of ' + johnTipsAvg + 'tips, and it is higher then mark.'): 
+console.log('Mark pays average of ' + markTipsAvg + 'tips, and it is higher then john.') ;
+
+var ttt;
+console.log(ttt+johnTipsAvg);
+/*
+console.log(john.tips);
+console.log(mark.tips);
+*/
+
+
